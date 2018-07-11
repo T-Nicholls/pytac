@@ -2,48 +2,30 @@
 Examples
 ========
 
-Installation
-~~~~~~~~~~~~
-
-This is only required on your first use.
-
-- Ensure you have the following requirements: Pip, Pipenv, and a local copy of pytac.
-
-- Install dev-packages, pytac, and cothread for EPICS support::
-
-    $ pipenv install --dev
-    $ pip install pytac
-    $ pip install cothread
-
-
 Initialisation
 ~~~~~~~~~~~~~~
 
-This is required each time you want to start up pytac.
+- Install pytac and cothread for EPICS support, and start Python::
 
-- Navigate to your pytac directory and activate a Pipenv shell, and start Python::
-
-    $ cd <directory-path>
-    $ pipenv shell
+    $ pip install pytac
+    $ pip install cothread
     $ python
     Python 2.7.3 (default, Nov  9 2013, 21:59:00)
     [GCC 4.4.7 20120313 (Red Hat 4.4.7-3)] on linux2
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
 
-
-- Import pytac and initialise the ``VMX`` ring mode::
+- Import 'pytac' and initialise the ``VMX`` ring mode::
 
     >>> import pytac.load_csv
     >>> lattice = pytac.load_csv.load('VMX')
 
-
 The ``lattice`` object is used for interacting with elements of the accelerator.
 
-Print BPM pv names along with s position
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Print BPM pvs along with s position
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Get all elements that represent BPMs::
+- Get elements representing BPMs::
 
     >>> bpms = lattice.get_elements('BPM')
 
@@ -76,24 +58,24 @@ Print BPM pv names along with s position
      11.374000000000002,
      ...
 
-Get the value of the 'b1' field of the quad elements
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Get the pv value from the quad elements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Get all Quadrupole elements and print their 'b1' field read back values::
+- Get the Quad elements and print their readback values on the b1 field::
 
     >>> quads = lattice.get_elements('QUAD')
     >>> for quad in quads:
-    >>>    print(quad.get_value('b1', pytac.RB))
+    >>>    print(quad.get_pv_value('b1', pytac.RB))
     71.3240509033
     129.351394653
     98.2537231445
     ...
 
 
-- Print the quad read back values of the b1 field using the lattice. This is more efficient
+- Print the quad pv values on the b1 field using the lattice. This is more efficient
   since it uses only one request to the control system::
 
-    >>> lattice.get_values('QUAD', 'b1', pytac.RB)
+    >>> lattice.get_pv_values('QUAD', 'b1', pytac.RB)
     [71.32496643066406,
      129.35191345214844,
      98.25287628173828,

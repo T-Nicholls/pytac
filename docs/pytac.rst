@@ -61,11 +61,3 @@ pytac.units module
     :members:
     :undoc-members:
     :show-inheritance:
-
-pytac.utils module
-------------------
-
-.. automodule:: pytac.utils
-    :members:
-    :undoc-members:
-    :show-inheritance:
