@@ -431,10 +431,6 @@ el_id,field,uc_type,uc_id,phys_units,eng_units
 2049,b2,pchip,114,m^-3,A
 21,b0,pchip,115,m^-1,A
 49,b0,pchip,115,m^-1,A
-111,b0,pchip,115,m^-1,A
-136,b0,pchip,115,m^-1,A
-164,b0,pchip,115,m^-1,A
-189,b0,pchip,115,m^-1,A
 258,b0,pchip,115,m^-1,A
 286,b0,pchip,115,m^-1,A
 360,b0,pchip,115,m^-1,A
