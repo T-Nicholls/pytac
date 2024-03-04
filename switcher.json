@@ -2,5 +2,9 @@
   {
     "version": "master",
     "url": "https://T-Nicholls.github.io/pytac/master/"
+  },
+  {
+    "version": "ESRF_changes",
+    "url": "https://T-Nicholls.github.io/pytac/ESRF_changes/"
   }
 ]
