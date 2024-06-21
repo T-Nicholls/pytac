@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pytac.load_csv &#8212; pytac 0.6.1.dev12+g9691058 documentation</title>
+    <title>pytac.load_csv &#8212; pytac 0.6.1.dev13+g2258498 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script src="../../_static/documentation_options.js?v=87dfc5bd"></script>
+    <script src="../../_static/documentation_options.js?v=2ade8838"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -690,18 +690,20 @@ document.write(`
             <span class="n">lat</span><span class="o">.</span><span class="n">add_element</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">csv_loader</span><span class="p">(</span><span class="n">mode_dir</span> <span class="o">/</span> <span class="n">EPICS_DEVICES_FILENAME</span><span class="p">)</span> <span class="k">as</span> <span class="n">csv_reader</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">csv_reader</span><span class="p">:</span>
-            <span class="n">name</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
             <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;el_id&quot;</span><span class="p">])</span>
             <span class="n">get_pv</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;get_pv&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;get_pv&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
             <span class="n">set_pv</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;set_pv&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;set_pv&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
-            <span class="n">d</span> <span class="o">=</span> <span class="n">EpicsDevice</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">control_system</span><span class="p">,</span> <span class="n">rb_pv</span><span class="o">=</span><span class="n">get_pv</span><span class="p">,</span> <span class="n">sp_pv</span><span class="o">=</span><span class="n">set_pv</span><span class="p">)</span>
             <span class="c1"># Devices on index 0 are attached to the lattice not elements.</span>
             <span class="n">target</span> <span class="o">=</span> <span class="n">lat</span> <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">lat</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
-            <span class="c1"># Create with a default UnitConv object that returns the input unchanged.</span>
-            <span class="n">target</span><span class="o">.</span><span class="n">add_device</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">],</span> <span class="n">d</span><span class="p">,</span> <span class="n">NullUnitConv</span><span class="p">())</span>
+            <span class="c1"># Create with a default UnitConv that returns the input unchanged.</span>
+            <span class="n">target</span><span class="o">.</span><span class="n">add_device</span><span class="p">(</span>  <span class="c1"># type: ignore[attr-defined]</span>
+                <span class="n">item</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">],</span>
+                <span class="n">EpicsDevice</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">control_system</span><span class="p">,</span> <span class="n">rb_pv</span><span class="o">=</span><span class="n">get_pv</span><span class="p">,</span> <span class="n">sp_pv</span><span class="o">=</span><span class="n">set_pv</span><span class="p">),</span>
+                <span class="n">NullUnitConv</span><span class="p">(),</span>
+            <span class="p">)</span>
         <span class="c1"># Add basic devices to the lattice.</span>
         <span class="n">positions</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">lat</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">lat</span><span class="p">:</span>  <span class="c1"># type: ignore[attr-defined]</span>
             <span class="n">positions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">s</span><span class="p">)</span>
         <span class="n">lat</span><span class="o">.</span><span class="n">add_device</span><span class="p">(</span>
             <span class="s2">&quot;s_position&quot;</span><span class="p">,</span> <span class="n">SimpleDevice</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">NullUnitConv</span><span class="p">()</span>
@@ -711,8 +713,6 @@ document.write(`
         <span class="k">with</span> <span class="n">csv_loader</span><span class="p">(</span><span class="n">simple_devices_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">csv_reader</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">csv_reader</span><span class="p">:</span>
                 <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;el_id&quot;</span><span class="p">])</span>
-                <span class="n">field</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">]</span>
-                <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">])</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">readonly</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;readonly&quot;</span><span class="p">])</span>
                     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span>
@@ -722,8 +722,11 @@ document.write(`
                     <span class="p">)</span>
                 <span class="c1"># Devices on index 0 are attached to the lattice not elements.</span>
                 <span class="n">target</span> <span class="o">=</span> <span class="n">lat</span> <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">lat</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
-                <span class="n">target</span><span class="o">.</span><span class="n">add_device</span><span class="p">(</span>
-                    <span class="n">field</span><span class="p">,</span> <span class="n">SimpleDevice</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="n">readonly</span><span class="p">),</span> <span class="n">NullUnitConv</span><span class="p">()</span>
+                <span class="c1"># Create with a default UnitConv that returns the input unchanged.</span>
+                <span class="n">target</span><span class="o">.</span><span class="n">add_device</span><span class="p">(</span>  <span class="c1"># type: ignore[attr-defined]</span>
+                    <span class="n">item</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">],</span>
+                    <span class="n">SimpleDevice</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]),</span> <span class="n">readonly</span><span class="o">=</span><span class="n">readonly</span><span class="p">),</span>
+                    <span class="n">NullUnitConv</span><span class="p">(),</span>
                 <span class="p">)</span>
     <span class="k">with</span> <span class="n">csv_loader</span><span class="p">(</span><span class="n">mode_dir</span> <span class="o">/</span> <span class="n">FAMILIES_FILENAME</span><span class="p">)</span> <span class="k">as</span> <span class="n">csv_reader</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">csv_reader</span><span class="p">:</span>
