@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pytac.element &#8212; pytac 0.6.1.dev11+g0d95c13 documentation</title>
+    <title>pytac.element &#8212; pytac 0.6.1.dev12+g9691058 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script src="../../_static/documentation_options.js?v=c97fb39a"></script>
+    <script src="../../_static/documentation_options.js?v=87dfc5bd"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -547,13 +547,13 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">repn</span> <span class="o">=</span> <span class="s2">&quot;&lt;Element &quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">repn</span> <span class="o">+=</span> <span class="s2">&quot;&#39;</span><span class="si">{0}</span><span class="s2">&#39;, &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">repn</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;, &quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">repn</span> <span class="o">+=</span> <span class="s2">&quot;index </span><span class="si">{0}</span><span class="s2">, &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-        <span class="n">repn</span> <span class="o">+=</span> <span class="s2">&quot;length </span><span class="si">{0}</span><span class="s2"> m, &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
+            <span class="n">repn</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;index </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="si">}</span><span class="s2">, &quot;</span>
+        <span class="n">repn</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;length </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">length</span><span class="si">}</span><span class="s2"> m, &quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cell</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">repn</span> <span class="o">+=</span> <span class="s2">&quot;cell </span><span class="si">{0}</span><span class="s2">, &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cell</span><span class="p">)</span>
-        <span class="n">repn</span> <span class="o">+=</span> <span class="s2">&quot;families </span><span class="si">{0}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">families</span><span class="p">))</span>
+            <span class="n">repn</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;cell </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cell</span><span class="si">}</span><span class="s2">, &quot;</span>
+        <span class="n">repn</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;families </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">families</span><span class="p">)</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
         <span class="k">return</span> <span class="n">repn</span>
 
     <span class="fm">__repr__</span> <span class="o">=</span> <span class="fm">__str__</span>

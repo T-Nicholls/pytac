@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pytac.load_csv &#8212; pytac 0.6.1.dev11+g0d95c13 documentation</title>
+    <title>pytac.load_csv &#8212; pytac 0.6.1.dev12+g9691058 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script src="../../_static/documentation_options.js?v=c97fb39a"></script>
+    <script src="../../_static/documentation_options.js?v=87dfc5bd"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -554,7 +554,7 @@ document.write(`
 <a class="viewcode-back" href="../../user/reference/api.html#pytac.load_csv.resolve_unitconv">[docs]</a>
 <span class="k">def</span> <span class="nf">resolve_unitconv</span><span class="p">(</span>
     <span class="n">uc_params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">unitconvs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">polyconv_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">pchipconv_file</span><span class="p">:</span> <span class="n">Path</span>
-<span class="p">):</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UnitConv</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a unit conversion object based on the dictionary of parameters passed.</span>
 
 <span class="sd">    Args:</span>
@@ -644,7 +644,7 @@ document.write(`
 
 <div class="viewcode-block" id="load">
 <a class="viewcode-back" href="../../user/reference/api.html#pytac.load_csv.load">[docs]</a>
-<span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">control_system</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">symmetry</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">control_system</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">symmetry</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EpicsLattice</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Load the elements of a lattice from a directory.</span>
 
 <span class="sd">    Args:</span>
