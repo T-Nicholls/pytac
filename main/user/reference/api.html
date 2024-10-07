@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>API &#8212; pytac 0.6.1.dev19+gac74aca documentation</title>
+    <title>API &#8212; pytac 0.6.1.dev20+g4a070fd documentation</title>
   
   
   
@@ -31,14 +31,14 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=477dab45"></script>
+    <script src="../../_static/documentation_options.js?v=57eab2aa"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -2488,6 +2488,32 @@ the repository is used.</p></li>
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="pytac.load_csv.available_ringmodes">
+<span class="sig-prename descclassname"><span class="pre">pytac.load_csv.</span></span><span class="sig-name descname"><span class="pre">available_ringmodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Set" title="(in Python v3.12)"><span class="pre">Set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/pytac/load_csv.html#available_ringmodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytac.load_csv.available_ringmodes" title="Link to this definition">#</a></dt>
+<dd><p>Return the possible ringmodes based on the subdirectories and files in
+the given directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is not guaranteed that the modes returned will be able to be
+successfully loaded due to errors, missing data, etc. I.e., any mode
+that can be loaded will always be returned, but modes that can’t be
+loaded might also sometimes be returned.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>directory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – The data directory to check inside. If no directory
+is given the default data directory location is used.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A set of possible ringmodes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.12)">set</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-pytac.units">
 <span id="pytac-units-module"></span><h2>pytac.units module<a class="headerlink" href="#module-pytac.units" title="Link to this heading">#</a></h2>
@@ -3182,6 +3208,7 @@ value.</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytac.load_csv.resolve_unitconv"><code class="docutils literal notranslate"><span class="pre">resolve_unitconv()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytac.load_csv.load_unitconv"><code class="docutils literal notranslate"><span class="pre">load_unitconv()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytac.load_csv.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytac.load_csv.available_ringmodes"><code class="docutils literal notranslate"><span class="pre">available_ringmodes()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pytac.units">pytac.units module</a><ul class="nav section-nav flex-column">
