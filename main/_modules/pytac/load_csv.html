@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pytac.load_csv &#8212; pytac 0.6.1.dev22+g3a39b20 documentation</title>
+    <title>pytac.load_csv &#8212; pytac 0.6.1.dev23+g2fe8b2c53 documentation</title>
   
   
   
@@ -40,7 +40,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=d647568f"></script>
+    <script src="../../_static/documentation_options.js?v=d4fb06af"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -730,7 +730,10 @@
 <span class="sd">                          is given the default data directory location is used.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        set: A set of possible ringmodes.</span>
+<span class="sd">        set[str]: A set of possible ringmodes.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        OSError: if no ringmodes can be found in the specified directory.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">directory</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">directory</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span>
@@ -740,6 +743,8 @@
             <span class="n">contents</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">directory_object</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">ELEMENTS_FILENAME</span> <span class="ow">in</span> <span class="n">contents</span> <span class="ow">and</span> <span class="n">FAMILIES_FILENAME</span> <span class="ow">in</span> <span class="n">contents</span><span class="p">:</span>
                 <span class="n">modes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">directory_object</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">modes</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No ringmodes found in </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">modes</span></div>
 
 </pre></div>
